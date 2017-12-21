@@ -4,7 +4,7 @@ cd .. # go to project base
 
 # Run setup
 
-./make.py clean setup
+# ./make.py clean setup
 
 # Run tools
 

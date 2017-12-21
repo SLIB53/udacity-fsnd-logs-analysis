@@ -1,16 +1,3 @@
-# Example Program
-
-## Output
-
-```text
-$ ./example.sh
-Ensuring removal of articles_ok_logs view...
-Ensuring removal of author_article_views view...
-Ensuring removal of daily_http_request_counts view...
-Creating articles_ok_logs view...
-Creating author_article_views view...
-Creating daily_http_request_counts view...
-
 Answers:
 
 1. What are the most popular three articles of all time?
@@ -29,4 +16,3 @@ Markoff Chaney - 84557 views
 3. On which days did more than 1% of requests lead to errors?
 
 July 17, 2016 - 2.3% errors
-```
