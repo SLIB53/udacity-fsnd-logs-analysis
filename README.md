@@ -1,24 +1,32 @@
 # Logs Analysis Project
 
-Project submission for the Logs Anaylsis Project for the Full Stack Web Developer Udacity nanodegree.
+Project submission for the Logs Anaylsis Project for the Full Stack Web Developer Udacity Nanodegree program.
 
 ## Setup
 
-Before using the tools, perform the **required** preliminary setup by using the `make.py` script.
+Before using the tools, perform the **required** preliminary setup by using the `make.py` script. The `setup` command will create all the views listed in the [Views](#views) section below.
 
 ```sh
 chmod u+x make.py && ./make.py setup
 ```
 
-Additionally, please remember to make tools executable:
+Additionally, please remember to make tools executable.
 
 ```sh
 chmod u+x src/tools/*.py
 ```
 
-## Views
+To remove views and possibly other artifacts, use `make.py clean`.
 
-### `articles_ok_logs`
+```sh
+chmod u+x make.py && ./make.py setup
+```
+
+## Usage
+
+### Views
+
+#### `articles_ok_logs`
 
 Articles are associated with their logs.
 
@@ -31,7 +39,7 @@ SELECT log.*, articles.id AS article_id
  WHERE log.status='200 OK';
 ```
 
-#### Preview
+##### Preview
 
 ```text
 news=> select * from articles_ok_logs order by time desc limit(5);
@@ -45,7 +53,7 @@ news=> select * from articles_ok_logs order by time desc limit(5);
 (5 rows)
 ```
 
-### `author_article_views`
+#### `author_article_views`
 
 Lists authors with the total number of page views for their articles.
 
@@ -59,7 +67,7 @@ Lists authors with the total number of page views for their articles.
 GROUP BY articles.author;
 ```
 
-#### Preview
+##### Preview
 
 ```text
 news=> select * from author_article_views order by author_id;
@@ -72,7 +80,7 @@ news=> select * from author_article_views order by author_id;
 (4 rows)
 ```
 
-### `daily_http_request_counts`
+#### `daily_http_request_counts`
 
 Lists HTTP request traffic counters per day.
 
@@ -96,7 +104,7 @@ Lists HTTP request traffic counters per day.
    WHERE http_requests_count.day = http_error_counts.day;
 ```
 
-#### Preview
+##### Preview
 
 ```text
 news=> select * from daily_http_request_counts limit(3);
@@ -108,9 +116,9 @@ news=> select * from daily_http_request_counts limit(3);
 (3 rows)
  ```
 
-## Tools Usage
+### Tools
 
-### List top 3 viewed articles
+#### List top 3 viewed articles
 
 ```sh
 $ cd tools
@@ -120,7 +128,7 @@ Bears love berries, alleges bear - 253801 views
 Bad things gone, say good people - 170098 views
 ```
 
-### List most popular authors
+#### List most popular authors
 
 ```sh
 $ cd tools
@@ -131,7 +139,7 @@ Anonymous Contributor - 170098 views
 Markoff Chaney - 84557 views
 ```
 
-### List days with high error rate
+#### List days with high error rate
 
 ```sh
 $ ./list_high_error_days.py
