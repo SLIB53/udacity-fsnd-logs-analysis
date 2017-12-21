@@ -22,6 +22,10 @@ To remove views and possibly other artifacts, use `make.py clean`.
 chmod u+x make.py && ./make.py setup
 ```
 
+## Example
+
+The [example](example) directory contains a sample [script](example/example.sh) to output answers to the project prompt, as well as a sample of the [program's output](example/example.output.txt).
+
 ## Usage
 
 ### Views
