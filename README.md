@@ -125,7 +125,6 @@ news=> select * from daily_http_request_counts limit(3);
 #### List top 3 viewed articles
 
 ```sh
-$ cd tools
 $ ./get_top_three_articles.py
 Candidate is jerk, alleges rival - 338647 views
 Bears love berries, alleges bear - 253801 views
@@ -135,7 +134,6 @@ Bad things gone, say good people - 170098 views
 #### List most popular authors
 
 ```sh
-$ cd tools
 $ ./list_authors_by_popularity.py
 Ursula La Multa - 507594 views
 Rudolf von Treppenwitz - 423457 views
