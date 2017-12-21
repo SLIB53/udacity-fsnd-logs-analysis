@@ -19,7 +19,7 @@ chmod u+x src/tools/*.py
 To remove views and possibly other artifacts, use `make.py clean`.
 
 ```sh
-chmod u+x make.py && ./make.py setup
+./make.py clean
 ```
 
 ## Example
