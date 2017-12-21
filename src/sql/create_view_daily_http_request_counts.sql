@@ -1,7 +1,7 @@
   CREATE VIEW daily_http_request_counts AS
   SELECT http_requests_count.day,
-         http_requests_count.count as total_count,
-         http_error_counts.count as error_count
+         http_requests_count.count AS total_count,
+         http_error_counts.count AS error_count
     FROM
          (
              SELECT date_trunc('day', log.time) AS day, count(*)
