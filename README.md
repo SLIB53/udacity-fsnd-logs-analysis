@@ -126,7 +126,7 @@ news=> select * from daily_http_request_counts limit(3);
 
 ```sh
 $ cd src/tools
-$ ./get_top_three_articles.py
+$ ./list_top_three_articles.py
 Candidate is jerk, alleges rival - 338647 views
 Bears love berries, alleges bear - 253801 views
 Bad things gone, say good people - 170098 views
