@@ -1,4 +1,4 @@
-CREATE view articles_ok_logs AS
+CREATE VIEW articles_ok_logs AS
 SELECT log.*, articles.id AS article_id
   FROM log
        JOIN articles
