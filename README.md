@@ -18,7 +18,7 @@ chmod u+x src/tools/*.py
 
 ## Usage
 
-### List Top 3 Viewed Articles
+### List top 3 viewed articles
 
 ```sh
 $ cd tools
@@ -28,7 +28,7 @@ Bears love berries, alleges bear - 253801 views
 Bad things gone, say good people - 170098 views
 ```
 
-### List Most Popular Authors
+### List most popular authors
 
 ```sh
 $ cd tools
@@ -37,4 +37,11 @@ Ursula La Multa - 507594 views
 Rudolf von Treppenwitz - 423457 views
 Anonymous Contributor - 170098 views
 Markoff Chaney - 84557 views
+```
+
+### List days with high error rate
+
+```sh
+$ ./list_high_error_days.py
+July 17, 2016 - 2.3% errors
 ```
