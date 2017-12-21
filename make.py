@@ -13,11 +13,18 @@ from pathlib import Path
 import psycopg2
 
 
+#
+# Commands
+#
+
 def setup():
     """Sets up views required for tools."""
 
     print("Creating articles_ok_logs view...")
     create_articles_ok_logs()
+
+    print("Creating author_article_views view...")
+    create_author_article_views()
 
 
 def clean():
@@ -26,34 +33,60 @@ def clean():
     print("Ensuring removal of articles_ok_logs view...")
     delete_articles_ok_logs()
 
+    print("Ensuring removal of author_article_views view...")
+    delete_author_article_views()
+
+#
+# Views CRUD
+#
 
 def create_articles_ok_logs():
     """Loads articles_ok_logs view into the news database."""
+
+    exec_create_view_sql(
+        Path('src/sql/create_view_articles_ok_logs.sql').read_text())
+
+def create_author_article_views():
+    """Loads author_article_views view into the news database."""
+
+    exec_create_view_sql(
+        Path('src/sql/create_view_author_article_views.sql').read_text())
+
+def delete_articles_ok_logs():
+    """Deletes articles_ok_logs view."""
+
+    exec_delete_view_sql("DROP VIEW articles_ok_logs CASCADE;")
+
+def delete_author_article_views():
+    """Deletes author_article_views view."""
+
+    exec_delete_view_sql("DROP VIEW author_article_views CASCADE;")
+
+def exec_create_view_sql(sql):
+    """Executes sql for creating views."""
 
     conn = psycopg2.connect("dbname=news user=vagrant")
     cur = conn.cursor()
 
     try:
-        sql = Path('src/sql/create_view_articles_ok_logs.sql').read_text()
         cur.execute(sql)
         conn.commit()
     except psycopg2.Error as db_error:
-        print("Warning: ", db_error)
+        print("Warning:", db_error)
     except:
         raise
     finally:
         cur.close()
         conn.close()
 
-
-def delete_articles_ok_logs():
-    """Deletes (idempotent) articles_ok_logs view in the news database."""
+def exec_delete_view_sql(sql):
+    """Deletes (idempotent) view in the news database."""
 
     conn = psycopg2.connect("dbname=news user=vagrant")
     cur = conn.cursor()
 
     try:
-        cur.execute("DROP VIEW articles_ok_logs;")
+        cur.execute(sql)
         conn.commit()
     except psycopg2.Error:
         pass
@@ -62,7 +95,6 @@ def delete_articles_ok_logs():
     finally:
         cur.close()
         conn.close()
-
 
 def main():
     parser = argparse.ArgumentParser(prog='make')
