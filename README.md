@@ -35,7 +35,7 @@ The [example](example) directory contains a sample [script](example/example.sh) 
 Articles are associated with their logs.
 
 ```sql
-CREATE view articles_ok_logs AS
+CREATE VIEW articles_ok_logs AS
 SELECT log.*, articles.id AS article_id
   FROM log
        JOIN articles
