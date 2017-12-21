@@ -22,12 +22,13 @@ def main():
     except psycopg2.Error as db_error:
         print("Error: DB Error:", db_error)
         sys.exit(1)
-    except:
+    except Exception:
         print("Error: Python Exception:", sys.exc_info()[0])
         sys.exit(1)
     finally:
         cur.close()
         conn.close()
+
 
 if __name__ == '__main__':
     main()

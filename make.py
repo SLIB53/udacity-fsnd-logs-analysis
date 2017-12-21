@@ -29,6 +29,7 @@ def setup():
     print("Creating daily_http_request_counts view...")
     create_daily_http_request_counts()
 
+
 def clean():
     """Removes all tool artifacts."""
 
@@ -41,6 +42,7 @@ def clean():
     print("Ensuring removal of daily_http_request_counts view...")
     delete_daily_http_request_counts()
 
+
 #
 # Views CRUD
 #
@@ -51,11 +53,13 @@ def create_articles_ok_logs():
     exec_create_view_sql(
         Path('src/sql/create_view_articles_ok_logs.sql').read_text())
 
+
 def create_author_article_views():
     """Loads author_article_views view."""
 
     exec_create_view_sql(
         Path('src/sql/create_view_author_article_views.sql').read_text())
+
 
 def create_daily_http_request_counts():
     """Loads daily_http_request_counts view."""
@@ -63,20 +67,24 @@ def create_daily_http_request_counts():
     exec_create_view_sql(
         Path('src/sql/create_view_daily_http_request_counts.sql').read_text())
 
+
 def delete_articles_ok_logs():
     """Deletes articles_ok_logs view."""
 
     exec_delete_view_sql("DROP VIEW articles_ok_logs CASCADE;")
+
 
 def delete_author_article_views():
     """Deletes author_article_views view."""
 
     exec_delete_view_sql("DROP VIEW author_article_views CASCADE;")
 
+
 def delete_daily_http_request_counts():
     """Deletes author_article_views view."""
 
     exec_delete_view_sql("DROP VIEW daily_http_request_counts CASCADE;")
+
 
 def exec_create_view_sql(sql):
     """Executes sql for creating views."""
@@ -89,11 +97,12 @@ def exec_create_view_sql(sql):
         conn.commit()
     except psycopg2.Error as db_error:
         print("Warning:", db_error)
-    except:
+    except Exception:
         raise
     finally:
         cur.close()
         conn.close()
+
 
 def exec_delete_view_sql(sql):
     """Deletes (idempotent) view in the news database."""
@@ -106,11 +115,12 @@ def exec_delete_view_sql(sql):
         conn.commit()
     except psycopg2.Error:
         pass
-    except:
+    except Exception:
         raise
     finally:
         cur.close()
         conn.close()
+
 
 def main():
     parser = argparse.ArgumentParser(prog='make')
@@ -130,7 +140,7 @@ def main():
     for command in commands_buffer:
         try:
             command()
-        except:
+        except Exception:
             print("Error: Python Exception:", sys.exc_info()[0])
             sys.exit(1)
 
