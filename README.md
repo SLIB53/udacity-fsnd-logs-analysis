@@ -39,7 +39,7 @@ SELECT log.*, articles.id AS article_id
  WHERE log.status='200 OK';
 ```
 
-##### Preview
+Preview:
 
 ```text
 news=> select * from articles_ok_logs order by time desc limit(5);
@@ -67,7 +67,7 @@ Lists authors with the total number of page views for their articles.
 GROUP BY articles.author;
 ```
 
-##### Preview
+Preview:
 
 ```text
 news=> select * from author_article_views order by author_id;
@@ -104,7 +104,7 @@ Lists HTTP request traffic counters per day.
    WHERE http_requests_count.day = http_error_counts.day;
 ```
 
-##### Preview
+Preview:
 
 ```text
 news=> select * from daily_http_request_counts limit(3);
